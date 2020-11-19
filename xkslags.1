@@ -1,0 +1,58 @@
+.TH XKSLAGS 1 2020-11-18 "Andrew Prater" "xkslags Manual"
+
+.SH NAME
+xkslags \- edit the keyboard group being used by xkblibs
+
+.SH SYNOPSIS
+.B xkslags
+[\fB-g\fR]
+[\fB-g\fR \fIgroup\fR]
+[\fB-g\fR \fIgroup\fR]
+[\fB-v\fR \fIverbose\fR]
+
+.SH DESCRIPTION
+\fBxkslags\fR allows the modifcation and monitoring of the keyboard group state.
+
+.SH OPTIONS
+.TP
+.BR \-i
+Info. Prints currently active group
+.TP
+.BR \-g " " \fIGroup-syntax\fR
+Group. Edits current group
+.TP
+.BR \-h
+Help. get program help
+
+.SH GROUP SYNTAX
+Group syntax is handled two seperate ways. If the first character in the group is a digit \fI0-9\fR it will use the first method, if it is \fI+\fR or \fI-\fR it will be handled the 2nd way.
+.PP
+The first method simply sets the group to the character given \fI0-9\fR
+.PP
+The second method requires 4 characters, the first being a \fI+\fR or a \fI-\fR, the second being a digit \fI0-9\fR the third being a - delimiter, and the fourth being a digit \fI0-9\fR.
+.PP
+The first character adds or subtracts the second character from the current group value, and the fourth character is used as the max character
+
+.SH EXAMPLES
+.PP
+Set the Group to 3
+.RS
+\fBxkslags\fR \fB-g\fR \fI3\fR
+.RE
+.PP
+Increase Group Number by 1, up to 4
+.RS
+\fBxkslags\fR \fB-g\fR \fI+1-4\fR
+.RE
+.PP
+Decrease Group Number by 2, if it goes below 0, reset to max of 6
+.RS
+\fBxkslags\fR \fB-g\fR \fI-2-6\fR
+.RE
+
+.SH SEE ALSO
+\fBxmodmap\fR(1), \fBxev\fR(1)
+
+.SH AUTHOR
+\fBxkslags\fR was written by Andrew Prater
+(bombchupart2 at gmail dot com)
